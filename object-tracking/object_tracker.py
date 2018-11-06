@@ -4,7 +4,6 @@ import cv2
 
 from random import randint
 
-
 MAJOR, MINOR, REVISION = cv2.__version__.split('.')
 WINDOW_NAME = 'Object Tracking'
 
@@ -16,6 +15,7 @@ def run(video_file, tracker_type):
 
     colors = []
     tracker = None
+    fps = None
     while True:
         ok, frame = video.read()
         if not ok:
@@ -41,13 +41,17 @@ def run(video_file, tracker_type):
 
 
 def tracker_update(frame, tracker, colors):
+    timer = cv2.getTickCount()
     ok, bboxs = tracker.update(frame)
+    fps = cv2.getTickFrequency() / (cv2.getTickCount() - timer)
+
     if ok:
         for i, bbox in enumerate(bboxs):
             p1 = (int(bbox[0]), int(bbox[1]))
             p2 = (int(bbox[0] + bbox[2]), int(bbox[1] + bbox[3]))
             cv2.rectangle(frame, p1, p2, colors[i], 2, 1)
-
+        
+        cv2.putText(frame, "FPS : " + str(int(fps)), (20,50), cv2.FONT_HERSHEY_SIMPLEX, 0.75, (50,170,50), 2)
 
 def get_multi_tracker(tracker_type, frame, bboxs):
     colors = []
