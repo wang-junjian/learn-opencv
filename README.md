@@ -38,4 +38,11 @@ cd $OPENCV_TEST_DATA_PATH
 ./opencv_test_photo
 ```
 
+## 参考资料
+* [How to install OpenCV 4 on Ubuntu](https://www.pyimagesearch.com/2018/08/15/how-to-install-opencv-4-on-ubuntu/)
+* [How to Install OpenCV on CentOS 7](https://www.vultr.com/docs/how-to-install-opencv-on-centos-7)
+* [Installing CMake](https://cmake.org/install/)
+* [OpenCV 4.0](https://opencv.org/opencv-4-0-0.html)
+* [Install OpenCV 4 on CentOS 7 (C++ and Python)](https://www.learnopencv.com/install-opencv-4-on-centos-7/)
+
 * [目标追踪](object-tracking/)
